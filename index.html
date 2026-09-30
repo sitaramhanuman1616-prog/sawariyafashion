@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAWARIYA FASHION | Fashion for Everyone</title>
+<meta name="description" content="Sawariya Fashion — premium clothing for Men, Women, Boys, Girls & Kids. Place your order in one simple step.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#100e0c; --charcoal:#1c1815; --cream:#f6efe2; --white:#fffdf9;
+  --gold:#b6864f; --gold-soft:#e4cda3; --muted:#8b8177; --line:#e8ddc8;
+  --danger:#8a3324; --danger-bg:#f4e6df;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{margin:0;background:var(--cream);color:var(--black);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,.serif{font-family:'Fraunces',serif;}
+.wrap{max-width:480px;margin:0 auto;padding:0 20px;}
+.pill{display:inline-block;font-size:12.5px;color:var(--gold);background:rgba(182,134,79,.1);border:1px solid var(--gold-soft);border-radius:20px;padding:5px 14px;}
+
+.topbar{background:var(--black);color:var(--cream);padding:26px 0 60px;text-align:center;position:relative;overflow:hidden;}
+.topbar:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% -20%,rgba(182,134,79,.35),transparent 55%);}
+.topbar .brand{font-size:24px;letter-spacing:.02em;position:relative;}
+.topbar .tag{font-size:13px;color:var(--gold-soft);margin-top:4px;position:relative;}
+.topbar .cats{font-size:12px;color:#a89a80;margin-top:8px;position:relative;}
+
+.card{background:var(--white);border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.16);margin:-38px 0 0;padding:24px 22px;opacity:0;transform:translateY(14px);animation:rise .6s ease forwards .1s;}
+@keyframes rise{to{opacity:1;transform:none;}}
+.card h2{font-size:21px;margin:0 0 4px;}
+.card p.lead{color:var(--muted);font-size:13.5px;margin:0 0 20px;}
+.price-line{display:flex;align-items:center;justify-content:space-between;background:#fbf6ec;border:1px solid var(--gold-soft);border-radius:12px;padding:12px 14px;margin-bottom:20px;}
+.price-line span:first-child{font-size:13px;color:var(--charcoal);}
+.price-line strong{font-family:'Fraunces',serif;font-size:19px;color:var(--gold);}
+
+.field{margin-bottom:14px;}
+.field label{display:block;font-size:13px;color:var(--charcoal);margin-bottom:6px;font-weight:500;}
+.field input,.field select{width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--white);font-size:15px;font-family:inherit;}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);}
+.field .err{color:var(--danger);font-size:12px;margin-top:5px;display:none;}
+.field.invalid input,.field.invalid select{border-color:var(--danger);}
+.field.invalid .err{display:block;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+.pay-opt{border:1.5px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px;cursor:pointer;background:var(--white);}
+.pay-opt.selected{border-color:var(--gold);background:#fbf6ec;}
+.pay-opt .top{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14.5px;}
+.pay-opt input{accent-color:var(--gold);width:17px;height:17px;}
+.pay-note{font-size:12.5px;color:var(--danger);background:var(--danger-bg);border-radius:8px;padding:10px 12px;margin-top:10px;display:none;}
+.pay-opt.selected .pay-note.active{display:block;}
+.free-delivery{font-size:12px;color:#2c6e49;font-weight:600;margin-top:8px;}
+
+.btn{display:block;width:100%;text-align:center;border:none;border-radius:12px;padding:15px;font-size:15.5px;font-weight:600;cursor:pointer;transition:transform .15s ease, opacity .15s ease;}
+.btn:active{transform:scale(.98);}
+.btn-dark{background:var(--black);color:var(--cream);margin-top:22px;}
+.btn-primary{background:var(--gold);color:var(--white);}
+
+#successView{display:none;}
+.check{width:56px;height:56px;border-radius:50%;background:#2c6e49;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px;animation:pop .4s ease;}
+@keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.1)}100%{transform:scale(1)}}
+.qr-box{width:190px;height:190px;margin:18px auto 10px;background:repeating-conic-gradient(#1c1815 0 25%,#fff 0 50%) 0 0/24px 24px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.qr-box span{background:var(--cream);padding:6px 10px;font-size:11px;border-radius:6px;color:var(--charcoal);}
+.wa-card{background:#eaf6ee;border:1px solid #bfe3cb;border-radius:14px;padding:16px;text-align:center;margin-top:20px;}
+.wa-card .icn{width:46px;height:46px;border-radius:50%;background:#2c6e49;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:22px;}
+
+footer{background:var(--black);color:#a89a80;padding:36px 0 calc(26px + env(safe-area-inset-bottom,0px));margin-top:50px;font-size:12px;text-align:center;}
+.spinner{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;display:inline-block;margin-right:8px;animation:spin .7s linear infinite;vertical-align:-3px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+
+<!-- ============ EDIT HERE: business settings ============ -->
+<script>
+const CONFIG = {
+  BRAND_NAME: "SAWARIYA FASHION",
+  TAGLINE: "Fashion for Everyone",
+  PRODUCT_PRICE: 1299,             // fixed price shown to match your ad — edit this
+  WHATSAPP_NUMBER: "919999999999", // digits only, country code first, no + or spaces
+  COD_ADVANCE_TEXT: "Cash on Delivery orders require 50% advance payment before dispatch."
+};
+</script>
+<!-- ======================================================= -->
+
+<div class="topbar">
+  <div class="brand serif" id="cfgBrand"></div>
+  <div class="tag" id="cfgTag"></div>
+  <div class="cats">Men • Women • Boys • Girls • Kids</div>
+</div>
+
+<div class="wrap">
+  <div class="card" id="orderForm">
+    <span class="pill">Order Online</span>
+    <h2>Place Your Order</h2>
+    <p class="lead">Please fill in your details below to place your order.</p>
+    <div class="price-line"><span>As shown in our advertisement</span><strong id="cfgPrice"></strong></div>
+
+    <form id="form" novalidate>
+      <div class="field" data-f="name"><label>Full Name</label><input type="text" id="fName"><div class="err">Please enter your full name.</div></div>
+      <div class="field" data-f="phone"><label>Mobile Number</label><input type="tel" id="fPhone" maxlength="10" placeholder="10-digit mobile number"><div class="err">Enter a valid 10-digit Indian mobile number.</div></div>
+      <div class="field" data-f="email"><label>Email Address</label><input type="email" id="fEmail"><div class="err">Enter a valid email address.</div></div>
+      <div class="field" data-f="address"><label>Complete Address</label><input type="text" id="fAddress"><div class="err">Please enter your delivery address.</div></div>
+      <div class="row2">
+        <div class="field" data-f="city"><label>City</label><input type="text" id="fCity"><div class="err">Required.</div></div>
+        <div class="field" data-f="state"><label>State</label><input type="text" id="fState"><div class="err">Required.</div></div>
+      </div>
+      <div class="row2">
+        <div class="field" data-f="pincode"><label>Pincode</label><input type="text" id="fPincode" maxlength="6" placeholder="6-digit pincode"><div class="err">Enter a valid 6-digit pincode.</div></div>
+        <div class="field" data-f="qty"><label>Quantity</label><input type="number" id="fQty" min="1" value="1"></div>
+      </div>
+
+      <p style="font-weight:600;font-size:14.5px;margin:22px 0 10px">How would you like to pay?</p>
+      <label class="pay-opt selected" id="optUpi">
+        <div class="top"><input type="radio" name="pay" value="upi" checked> UPI Payment</div>
+      </label>
+      <label class="pay-opt" id="optCod">
+        <div class="top"><input type="radio" name="pay" value="cod"> Cash on Delivery</div>
+        <div class="pay-note" id="codNote"></div>
+      </label>
+      <div class="free-delivery">✓ No Delivery Charges</div>
+
+      <button type="submit" class="btn btn-dark" id="submitBtn">Submit Order</button>
+    </form>
+  </div>
+
+  <div class="card" id="successView">
+    <div class="check">✓</div>
+    <h2 style="text-align:center;font-size:19px">Order Details Submitted Successfully</h2>
+    <p class="lead" style="text-align:center">Please complete your payment using the QR code below and send the screenshot on WhatsApp.</p>
+    <div class="qr-box"><span>[QR CODE WILL BE ADDED HERE]</span></div>
+    <p style="text-align:center;font-size:12.5px;color:var(--muted)">Pay the amount shown in our advertisement — we'll verify it manually.</p>
+
+    <div class="wa-card">
+      <div class="icn">☎</div>
+      <p style="font-weight:600;margin:0 0 4px">Payment Done?</p>
+      <p style="font-size:12.5px;color:var(--muted);margin:0 0 14px">Please send your payment screenshot on WhatsApp for order verification and better customer service.</p>
+      <a class="btn btn-primary" id="waBtn" href="#" target="_blank">Send Payment Screenshot on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div id="footBrand"></div>
+  <div>“Fashion for Everyone”</div>
+</footer>
+
+<script>
+const rupee = n => "₹" + Number(n).toLocaleString("en-IN");
+document.getElementById('cfgBrand').textContent = CONFIG.BRAND_NAME;
+document.getElementById('cfgTag').textContent = CONFIG.TAGLINE;
+document.getElementById('cfgPrice').textContent = rupee(CONFIG.PRODUCT_PRICE);
+document.getElementById('codNote').textContent = CONFIG.COD_ADVANCE_TEXT;
+document.getElementById('footBrand').textContent = CONFIG.BRAND_NAME;
+
+document.querySelectorAll('.pay-opt').forEach(opt=>{
+  opt.addEventListener('click', ()=>{
+    document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('selected'));
+    opt.classList.add('selected');
+    opt.querySelector('input[type=radio]').checked = true;
+  });
+});
+
+function showError(id, invalid){
+  const field = document.querySelector(`[data-f="${id}"]`);
+  if(field) field.classList.toggle('invalid', invalid);
+}
+function validate(){
+  let ok = true;
+  const name = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const email = document.getElementById('fEmail').value.trim();
+  const address = document.getElementById('fAddress').value.trim();
+  const city = document.getElementById('fCity').value.trim();
+  const state = document.getElementById('fState').value.trim();
+  const pincode = document.getElementById('fPincode').value.trim();
+  const checks = [
+    ['name', name.length > 1], ['phone', /^[6-9]\d{9}$/.test(phone)],
+    ['email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)], ['address', address.length > 4],
+    ['city', city.length > 1], ['state', state.length > 1], ['pincode', /^\d{6}$/.test(pincode)]
+  ];
+  checks.forEach(([id, valid])=>{ showError(id, !valid); if(!valid) ok = false; });
+  return ok;
+}
+
+document.getElementById('form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  if(!validate()) return;
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Submitting...';
+  await new Promise(r=>setTimeout(r, 700));
+
+  const waText = encodeURIComponent("Hello Sawariya Fashion, I have completed my payment. Please find my payment screenshot for order verification.");
+  document.getElementById('waBtn').href = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${waText}`;
+
+  document.getElementById('orderForm').style.display = 'none';
+  const sv = document.getElementById('successView');
+  sv.style.display = 'block';
+  sv.scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>
